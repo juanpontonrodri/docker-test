@@ -7,3 +7,14 @@ services:
     restart: always
     ports:
       - "27017:27017"
+
+  express:
+    build:
+      context: ./app/api
+      dockerfile: Dockerfile-express
+    container_name: express
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
