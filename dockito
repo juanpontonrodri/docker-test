@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+
+  express:
+    build:
+      context: ./app/api
+      dockerfile: Dockerfile-express
+    container_name: express
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+
+  angular:
+    build:
+      context: ./app/client
+      dockerfile: Dockerfile-angular
+    container_name: angular
+    restart: always
+    ports:
+      - "4200:4200"
