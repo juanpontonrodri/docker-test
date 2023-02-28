@@ -2,8 +2,7 @@ FROM node:latest
 WORKDIR /
 RUN mkdir /app
 WORKDIR /app
-#COPY package*.json .
+COPY package*.json .
 RUN npm install
-#COPY . .
-EXPOSE 3000
-CMD ["npm", "run"]
+EXPOSE 4200
+RUN sleep 500

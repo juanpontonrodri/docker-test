@@ -1,7 +1,23 @@
 FROM node:latest
+WORKDIR /
+RUN mkdir /app
 WORKDIR /app
-COPY package*.json ./
+COPY package*.json .
 RUN npm install
 COPY . .
-EXPOSE 4200
-CMD ["ng", "serve"]
+EXPOSE 3000
+CMD ["npm", "run"]
+
+#WORKDIR /
+#RUN mkdir /app
+#WORKDIR /app
+#COPY package*.json .
+#RUN npm install
+#COPY . .
+#EXPOSE 4200
+
+#WORKDIR /app/client
+#COPY package*.json ./
+#RUN npm install
+#COPY . .
+#EXPOSE 4200

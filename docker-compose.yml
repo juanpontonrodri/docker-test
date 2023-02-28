@@ -16,5 +16,16 @@ services:
     restart: always
     ports:
       - "3000:3000"
+    #depends_on:
+    # - mongo
+
+  angular:
+    build:
+      context: ./app/client
+      dockerfile: Dockerfile-angular
+    container_name: angular
+    restart: always
+    ports:
+      - "4200:4200"
     depends_on:
-      - mongo
+      - express
